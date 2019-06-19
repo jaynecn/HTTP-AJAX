@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+// import NewFriend from './components/NewFriend';
 
 function Friends(props) {
   return(
@@ -10,6 +11,8 @@ function Friends(props) {
           <h1><Link to={`/friends/${friend.id}`} key={friend.id}>{friend.name}</Link></h1>
         </div>
       ))}
+      {/* <Link to="/new-friend"><h2>Add New Friend</h2></Link>
+      <Route exact path="/new-friend" component={NewFriend} /> */}
     </div>
   );
 }

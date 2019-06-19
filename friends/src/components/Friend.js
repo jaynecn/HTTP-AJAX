@@ -1,5 +1,4 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
 
 function Friend(props) {
   // const id = props.match.params.id;
