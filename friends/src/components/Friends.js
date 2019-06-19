@@ -1,17 +1,15 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Friends(props) {
   return(
     <div>
-      <p>Here are my friends:</p>
+      <p>Here are my friends</p>
       {props.friends.map(friend => (
         <div>
-          <h1 key={friend.id}>{friend.name}</h1>
-          <h2>Age: {friend.age}</h2>
-          <h3>Email: {friend.email}</h3>
+          <h1><Link to={`/friends/${friend.id}`} key={friend.id}>{friend.name}</Link></h1>
         </div>
       ))}
-      
     </div>
   );
 }

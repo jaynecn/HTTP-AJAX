@@ -3,6 +3,7 @@ import {Route, Link} from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 import Friends from './components/Friends';
+import Friend from './components/Friend';
 
 class App extends React.Component {
   constructor() {
@@ -34,7 +35,14 @@ class App extends React.Component {
         <h1>PPPPPPSSSSSTTTT....</h1>
         <h4>Wanna know some info about my friends??</h4>
         <Link className="friends-link" to="/friends"><h3>Friends</h3></Link>
-    <Route exact path="/friends" render={props => <Friends {...props} friends={this.state.friends} /> } />
+        <Route 
+        exact path="/friends" 
+        render={props => <Friends {...props} friends={this.state.friends} /> } 
+        />
+        <Route 
+          path="/friends/:id" 
+          render={(props) => <Friend friends={this.state.friends} {...props} />} 
+        />
       </div>
     )
   }
