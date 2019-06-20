@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 import Friends from './components/Friends';
 import Friend from './components/Friend';
+import NewFriend from './components/NewFriend';
 
 
 class App extends React.Component {
@@ -12,6 +13,18 @@ class App extends React.Component {
     this.state = {
       friends: []
     };
+  }
+
+  postMessage = friend => {
+    axios
+      .post('http://localhost:5000/friends', friend)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          
+        })
+
+      })
   }
 
 
@@ -43,6 +56,10 @@ class App extends React.Component {
         <Route 
           path="/friends/:id" 
           render={(props) => <Friend friends={this.state.friends} {...props} />} 
+        />
+        <Route 
+        exact path="/new-friend" 
+        render={props => <NewFriend {...props} friends={this.state.friends} /> } 
         />
       </div>
     )

@@ -12,7 +12,11 @@ function Friends(props) {
         </div>
       ))}
       <Link to="/new-friend"><h2>Add New Friend</h2></Link>
-      <Route exact path="/new-friend" component={NewFriend} />
+      {/* <Route exact path="/new-friend" component={NewFriend} /> */}
+      <Route 
+        exact path="/new-friend" 
+        render={props => <NewFriend {...props} friends={this.state.friends} /> } 
+        />
     </div>
   );
 }

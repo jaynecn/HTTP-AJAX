@@ -1,8 +1,8 @@
 import React from 'react';
 
  class NewFriend extends React.Component {
-   constructor() {
-     super();
+   constructor(props) {
+     super(props);
      this.state = {
        friendToAdd: {
          name: '',
@@ -12,27 +12,53 @@ import React from 'react';
      };
    }
 
+   handleChange = event => {
+     this.setState({
+       friendToAdd: {
+         ...this.state.friendToAdd,
+         [event.target.name]: event.target.value
+       }
+     });
+   };
+
+   postMessage = event => {
+     event.preventDefault();
+     this.props.postMessage(this.state.friendToAdd);
+   };
+
   render() { 
     return (
       <div>
-        <form onSubmit={}>
-          <input value={}
-            onChange={}
-            placeholder="Name">
-          </input>
-          <input value={}
-            onChange={}
-            placeholder="Age">
-          </input>
-          <input value={}
-            onChange={}
-            placeholder="Email">
-          </input>
-          <button onClick=
-        {}>Add New Friend</button>
+        <h4>Enter the deets of your new friend here</h4>
+        <form onSubmit={this.postMessage}>
+          <input 
+            type="text"
+            name="name"
+            placeholder="Name"
+            onChange={this.handleChange}
+            value={this.state.friendToAdd.name}
+          />
+          <input
+            type="number"
+            name="age"
+            placeholder="Age"
+            onChange={this.handleChange}
+            value={this.state.friendToAdd.age}
+          />
+          <input 
+            type="text"
+            name="email"
+            placeholder="Email"
+            onChange={this.handleChange}
+            value={this.state.friendToAdd.email}
+          />
+          <button 
+            type="submit">
+            Add New Friend
+          </button>
         </form>
       </div>
-    )
+    );
   }
 }
 
